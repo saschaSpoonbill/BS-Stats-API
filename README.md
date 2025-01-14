@@ -46,7 +46,24 @@ uvicorn main:app --reload
 - `GET /battle-data`: Alle Battle Logs abrufen
 - `GET /battle-data/{player_tag}`: Battle Logs eines bestimmten Spielers abrufen
 - `GET /battle-data/{player_tag}/{battle_time}/{brawler_id}`: Spezifischen Battle Log abrufen
+- `GET /battle-statistics`: Statistische Auswertung der Battle Logs
+- `GET /trophy-progress`: Täglicher Trophy-Verlauf
 
 3. API-Dokumentation:
 - Swagger UI: `http://localhost:8000/docs`
 - ReDoc: `http://localhost:8000/redoc`
+
+## Beispiel-Aufrufe
+
+```bash
+# Basis-Statistiken für einen Spieler
+curl "http://localhost:8000/battle-statistics?player_tag=%232G9LP20YV0"
+
+# Trophy-Verlauf für einen bestimmten Zeitraum
+curl "http://localhost:8000/trophy-progress?player_tag=%232G9LP20YV0&start_date=2024-01-01T00:00:00&end_date=2024-03-14T23:59:59"
+
+# Battle-Logs eines Spielers
+curl "http://localhost:8000/battle-data/%232G9LP20YV0"
+```
+
+Hinweis: In URLs muss das #-Zeichen als %23 kodiert werden.
