@@ -113,3 +113,41 @@ class GameModeStatsResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class BestBrawler(BaseModel):
+    brawler_name: str
+    battles: int
+    victories: int
+    trophy_change: int
+    win_rate: float
+
+    class Config:
+        from_attributes = True
+
+class MapStats(BaseModel):
+    event_map: str
+    battle_mode: str
+    battles: int
+    victories: int
+    trophy_change: int
+    avg_trophies_per_battle: float
+    avg_duration: Optional[float] = None  # in Sekunden
+    seconds_per_trophy: Optional[float] = None
+    win_rate: float
+    most_played_brawler: BestBrawler
+    most_trophy_brawler: BestBrawler
+
+    class Config:
+        from_attributes = True
+
+class MapStatsResponse(BaseModel):
+    player_tag: Optional[str] = None
+    start_date: Optional[datetime] = None
+    end_date: Optional[datetime] = None
+    map_statistics: List[MapStats]
+    total_battles: int
+    total_trophy_change: int
+    overall_win_rate: float
+
+    class Config:
+        from_attributes = True
