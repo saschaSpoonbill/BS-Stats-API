@@ -24,8 +24,23 @@ class BattleDataBase(BaseModel):
     rank: Optional[int] = None
     is_star_player: Optional[bool] = None
 
+    class Config:
+        from_attributes = True
 
 # Schema zum Auslesen (ORM-Unterstützung aktivieren)
 class BattleDataRead(BattleDataBase):
     class Config:
-        orm_mode = True
+        from_attributes = True
+
+class BattleStatistics(BaseModel):
+    first_battle: datetime
+    last_battle: datetime
+    total_battles: int
+    unique_players: int
+    avg_battles_per_day: float
+    avg_trophies_per_day: float
+    avg_victories_per_day: float
+    win_rate: float
+
+    class Config:
+        from_attributes = True
