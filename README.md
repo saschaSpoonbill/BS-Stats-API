@@ -36,6 +36,31 @@ pip install -r requirements.txt
 - Kopiere `.env.example` zu `.env`
 - Trage deine Datenbank-Zugangsdaten in die `.env` ein
 
+## Datenbankstruktur
+
+Die API erwartet eine MySQL-Datenbank mit einer Tabelle `battle_logs`, die folgende Struktur aufweist:
+
+| Feldname              | Typ          | Null | Schlüssel | Beschreibung                    |
+|----------------------|--------------|------|------------|--------------------------------|
+| player_tag           | varchar(50)  | Nein | PK        | Eindeutige Spieler-ID          |
+| battle_time          | datetime     | Nein | PK        | Zeitpunkt des Kampfes          |
+| brawler_id           | int          | Nein | PK        | ID des verwendeten Brawlers    |
+| brawler_name         | varchar(50)  | Ja   |           | Name des Brawlers              |
+| brawler_power        | int          | Ja   |           | Power-Level des Brawlers       |
+| brawler_trophies     | int          | Ja   |           | Trophäen des Brawlers         |
+| brawler_trophy_change| int          | Ja   |           | Trophäenänderung des Brawlers |
+| player_name          | varchar(50)  | Ja   |           | Name des Spielers              |
+| event_id             | int          | Ja   |           | Event-ID                       |
+| event_mode           | varchar(50)  | Ja   |           | Spielmodus                     |
+| event_map            | varchar(100) | Ja   |           | Kartenname                     |
+| battle_mode          | varchar(50)  | Ja   |           | Kampfmodus                     |
+| battle_type          | varchar(50)  | Ja   |           | Kampftyp                       |
+| battle_result        | varchar(10)  | Ja   |           | Kampfergebnis                  |
+| battle_duration      | int          | Ja   |           | Kampfdauer in Sekunden         |
+| trophy_change        | int          | Ja   |           | Gesamte Trophäenänderung      |
+| rank                 | int          | Ja   |           | Platzierung (für Solo-Modi)    |
+| is_star_player       | tinyint(1)   | Ja   |           | Star Player Status            |
+
 
 ## Verwendung
 
